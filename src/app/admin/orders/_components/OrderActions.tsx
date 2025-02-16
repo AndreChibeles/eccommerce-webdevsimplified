@@ -1,10 +1,9 @@
 "use client";
 
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { useTransition } from "react";
-
-import { deleteUser } from "../../_actions/user";
 import { useRouter } from "next/navigation";
+import { useTransition } from "react";
+import { deleteOrder } from "../../_actions/orders";
 
 export function DeleteDropDownItem({ id }: { id: string }) {
   const [isPending, startTransition] = useTransition();
@@ -16,7 +15,7 @@ export function DeleteDropDownItem({ id }: { id: string }) {
       disabled={isPending}
       onClick={() =>
         startTransition(async () => {
-          await deleteUser(id);
+          await deleteOrder(id);
           router.refresh();
         })
       }
